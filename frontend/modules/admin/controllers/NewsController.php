@@ -66,11 +66,11 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(\Yii::$app->request->post('name_'.$model->id) == 1 && News::find()->where(['id' => $model->id, 'status' => 0])->exists()){
+            if(\Yii::$app->request->post('news_'.$model->id) == 1 && News::find()->where(['id' => $model->id, 'status' => 0])->exists()){
                 $model->status = 1;
                 $model->save();
             }
-            if(\Yii::$app->request->post('name_'.$model->id) == 0 && News::find()->where(['id' => $model->id, 'status' => 1])->exists()){
+            if(\Yii::$app->request->post('news_'.$model->id) == 0 && News::find()->where(['id' => $model->id, 'status' => 1])->exists()){
                 $model->status = 0;
                 $model->save();
             }
